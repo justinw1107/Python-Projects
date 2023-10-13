@@ -1,5 +1,50 @@
-tie
-win
-lose
-tie
-tie
+Paper VS Scissors : Lose
+Paper VS Rock : Win
+Scissors VS Rock : Lose
+Paper VS Rock : Win
+Scissors VS Scissors : Tie
+Scissors VS Paper : Win
+Rock VS Rock : Tie
+Scissors VS Paper : Win
+Scissors VS Rock : Lose
+Paper VS Scissors : Lose
+Rock VS Scissors : Win
+Paper VS Rock : Win
+Rock VS Scissors : Win
+Paper VS Scissors : Lose
+Scissors VS Scissors : Tie
+Scissors VS Rock : Lose
+Paper VS Scissors : Lose
+Scissors VS Paper : Win
+Scissors VS Rock : Lose
+Paper VS Scissors : Lose
+Scissors VS Rock : Lose
+Paper VS Rock : Win
+Scissors VS Paper : Win
+Paper VS Scissors : Lose
+Paper VS Paper : Tie
+Rock VS Paper : Lose
+Rock VS Scissors : Win
+Scissors VS Paper : Win
+Rock VS Rock : Tie
+Scissors VS Paper : Win
+Paper VS Rock : Win
+Paper VS Rock : Win
+Scissors VS Paper : Win
+Paper VS Paper : Tie
+Rock VS Rock : Tie
+Paper VS Rock : Win
+Paper VS Rock : Win
+Scissors VS Scissors : Tie
+Scissors VS Paper : Win
+Rock VS Rock : Tie
+Rock VS Rock : Tie
+Rock VS Scissors : Win
+Paper VS Scissors : Lose
+Paper VS Paper : Tie
+Scissors VS Rock : Lose
+Scissors VS Rock : Lose
+Rock VS Paper : Lose
+Rock VS Rock : Tie
+Paper VS Paper : Tie
+Rock VS Paper : Lose

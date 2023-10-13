@@ -1,44 +1,47 @@
 import random
 
-class My_class:
+class RPS:
   def __init__(self):
     self.results = []
-    self.total = []
     self.wins = 0
     self.ties = 0
     self.losses = 0
-    self.outcomes = []
-    self.outcomehelper = []
-  
+
   
   def pick_hands(self):
-    rps_outcomes = ('rock', 'paper', 'scissors')
+    rps_outcomes = ('Rock', 'Paper', 'Scissors')
     self.player = random.choice(rps_outcomes)
     self.computer = random.choice(rps_outcomes)
     
     
   def compute_round(self, rounds):
     outcomes_dictionary = {
-      ('rock', 'rock'): 'tie',
-      ('rock', 'paper'): 'lose',
-      ('rock', 'scissors'): 'win',
-      ('paper', 'rock'): 'win',
-      ('paper', 'paper'): 'tie',
-      ('paper', 'scissors'): 'lose',
-      ('scissors', 'rock'): 'lose',
-      ('scissors', 'paper'): 'win',
-      ('scissors', 'scissors'): 'tie'
+      ('Rock', 'Rock'): 'Tie',
+      ('Rock', 'Paper'): 'Lose',
+      ('Rock', 'Scissors'): 'Win',
+      ('Paper', 'Rock'): 'Win',
+      ('Paper', 'Paper'): 'Tie',
+      ('Paper', 'Scissors'): 'Lose',
+      ('Scissors', 'Rock'): 'Lose',
+      ('Scissors', 'Paper'): 'Win',
+      ('Scissors', 'Scissors'): 'Tie'
     }
     
-    
-    
-    for x in range(rounds):
+    for _ in range(rounds):
       self.pick_hands()
-      result = outcomes_dictionary[(self.player, self.computer)]
-      self.results.append(result)
+      result = outcomes_dictionary[(self.player, self.computer)]  
+      
+      if result == 'Win':
+        self.wins += 1
+      elif result == 'Tie':
+        self.ties += 1
+      else:
+        self.losses += 1
+        
+      self.results.append((self.player, self.computer, result))
     
     
-  def add_result(self):
+  def execute(self):
     while True:
       try:
         user_input = input('How many rounds would you like to play?\n')
@@ -52,23 +55,19 @@ class My_class:
         print('Please enter a valid number')
     
     self.compute_round(rounds)
-
-    for result in self.results:
-      print(f"Result: {result}")
+    
+    print(f"Wins: {self.wins}\nTies: {self.ties}\nLosses: {self.losses}")
       
 
-    
   def write_result(self):
-    self.add_result()
+    self.execute()
+
     f = open("Rock_Paper_Scissors/results.txt", "w")
-    for x in self.results:
-      f.write(str(x) + '\n')
+    for player, computer, result in self.results:
+      f.write(f"{player} VS {computer} : {result}\n")
     
     
       
-    
-            
-    
-
-obj = My_class()
-obj.write_result()
+game = RPS()
+game.execute()
+# game.write_result()
