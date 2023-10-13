@@ -2,61 +2,40 @@ import random
 
 class My_class:
   def __init__(self):
-    self.player = ''
-    self.computer = ''
-    self.result = ''
+    self.results = []
     self.total = []
     self.wins = 0
     self.ties = 0
     self.losses = 0
+    self.outcomes = []
+    self.outcomehelper = []
   
   
   def pick_hands(self):
     rps_outcomes = ('rock', 'paper', 'scissors')
-    x = random.randint(0,2)
-    y = random.randint(0,2)
-    self.player = rps_outcomes[x]
-    self.computer = rps_outcomes[y]
+    self.player = random.choice(rps_outcomes)
+    self.computer = random.choice(rps_outcomes)
     
     
   def compute_round(self, rounds):
+    outcomes_dictionary = {
+      ('rock', 'rock'): 'tie',
+      ('rock', 'paper'): 'lose',
+      ('rock', 'scissors'): 'win',
+      ('paper', 'rock'): 'win',
+      ('paper', 'paper'): 'tie',
+      ('paper', 'scissors'): 'lose',
+      ('scissors', 'rock'): 'lose',
+      ('scissors', 'paper'): 'win',
+      ('scissors', 'scissors'): 'tie'
+    }
+    
+    
+    
     for x in range(rounds):
       self.pick_hands()
-      
-      if self.player == 'rock':
-        if self.computer == 'rock':
-          self.result = 'tie'
-          self.ties += 1
-        elif self.computer == 'paper':
-          self.result = 'lose'
-          self.losses += 1
-        else:
-          self.result = 'win'
-          self.wins += 1
-          
-      elif self.player == 'paper':
-        if self.computer == 'rock':
-          self.result = 'win'
-          self.wins += 1
-        elif self.computer == 'paper':
-          self.result = 'tie'
-          self.ties += 1
-        else:
-          self.result = 'lose'
-          self.losses += 1
-          
-      else:
-        if self.computer == 'rock':
-          self.result = 'lose'
-          self.losses += 1
-        elif self.computer == 'paper':
-          self.result = 'win'
-          self.wins += 1
-        else:
-          self.result = 'tie'
-          self.ties += 1
-          
-      self.total.append(self.result)
+      result = outcomes_dictionary[(self.player, self.computer)]
+      self.results.append(result)
     
     
   def add_result(self):
@@ -73,16 +52,23 @@ class My_class:
         print('Please enter a valid number')
     
     self.compute_round(rounds)
-    for x in self.total:
-      print(x)
+
+    for result in self.results:
+      print(f"Result: {result}")
       
-    print('Wins: ' + str(self.wins))
-    print('Ties: ' + str(self.ties))
-    print('Losses: ' + str(self.losses))
+
+    
+  def write_result(self):
+    self.add_result()
+    f = open("Rock_Paper_Scissors/results.txt", "w")
+    for x in self.results:
+      f.write(str(x) + '\n')
+    
+    
       
     
             
     
 
 obj = My_class()
-obj.add_result()
+obj.write_result()
